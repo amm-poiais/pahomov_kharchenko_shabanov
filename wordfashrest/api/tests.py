@@ -16,8 +16,9 @@ class ModelTestCase(TestCase):
         self.dictionary = Dictionary(word=self.word)
         self.dictionary.save()
         user = User.objects.create(username="nerd")
-        user.portfolio.history_words.add(self.dictionary)
-        user.portfolio.favorite_words.add(self.dictionary)
+        user.save()
+        user.profile.history_words.add(self.dictionary)
+        user.profile.favorite_words.add(self.dictionary)
 
     def test_model_can_create_a_dictionary(self):
         """Test the dictionary model can create a dictionary."""
@@ -39,13 +40,16 @@ class ViewTestCase(TestCase):
             reverse('create'),
             self.dictionary_data,
             format="json")
+
         self.dictionary_history = Dictionary(word='Test_history', description='description_test')
         self.dictionary_favorite = Dictionary(word='Test_favorite', description='description_test')
         self.dictionary_history.save()
         self.dictionary_favorite.save()
+
         user = User.objects.create(username="nerd")
-        user.portfolio.favorite_words.add(self.dictionary_favorite)
-        user.portfolio.history_words.add(self.dictionary_history)
+        user.profile.favorite_words.add(self.dictionary_favorite)
+        user.profile.history_words.add(self.dictionary_history)
+
         self.client.force_authenticate(user=user)
 
     def test_api_can_create_a_dictionary(self):
