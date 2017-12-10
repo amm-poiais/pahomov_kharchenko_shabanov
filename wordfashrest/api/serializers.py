@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Dictionary
 
 
-class BucketlistSerializer(serializers.ModelSerializer):
+class DictionarySerializer(serializers.ModelSerializer):
     """Serializer to map the Model instance into JSON format."""
 
     class Meta:
