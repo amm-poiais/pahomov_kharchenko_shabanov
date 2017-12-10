@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Dictionary
-from .models import Portfolio
+from .models import Profile
+from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from rest_framework import status
 from django.urls import reverse
@@ -14,9 +15,9 @@ class ModelTestCase(TestCase):
         self.word = "Test"
         self.dictionary = Dictionary(word=self.word)
         self.dictionary.save()
-        user = CustomUser.objects.create(username="nerd")
-        user.history_words.add(self.dictionary)
-        user.favorite_words.add(self.dictionary)
+        user = User.objects.create(username="nerd")
+        user.portfolio.history_words.add(self.dictionary)
+        user.portfolio.favorite_words.add(self.dictionary)
 
     def test_model_can_create_a_dictionary(self):
         """Test the dictionary model can create a dictionary."""
@@ -42,9 +43,9 @@ class ViewTestCase(TestCase):
         self.dictionary_favorite = Dictionary(word='Test_favorite', description='description_test')
         self.dictionary_history.save()
         self.dictionary_favorite.save()
-        user = CustomUser.objects.create(username="nerd")
-        user.favorite_words.add(self.dictionary_favorite)
-        user.history_words.add(self.dictionary_history)
+        user = User.objects.create(username="nerd")
+        user.portfolio.favorite_words.add(self.dictionary_favorite)
+        user.portfolio.history_words.add(self.dictionary_history)
         self.client.force_authenticate(user=user)
 
     def test_api_can_create_a_dictionary(self):

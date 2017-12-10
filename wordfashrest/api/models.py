@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, UserManager
+from django.contrib.auth.models import User
 
 
 class Dictionary(models.Model):
@@ -12,9 +12,9 @@ class Dictionary(models.Model):
         return "{}".format(self.word)
 
 
-class Portfolio(models.Model):
+class Profile(models.Model):
     """User with app settings."""
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     history_words = models.ManyToManyField(Dictionary, related_name='history_words')
     favorite_words = models.ManyToManyField(Dictionary, related_name='favorite_words')
 
