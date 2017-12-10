@@ -12,10 +12,15 @@ class Dictionary(models.Model):
         return "{}".format(self.word)
 
 
-class CustomUser(User):
+class Portfolio(models.Model):
     """User with app settings."""
+    user = models.OneToOneField(User)
     history_words = models.ManyToManyField(Dictionary, related_name='history_words')
     favorite_words = models.ManyToManyField(Dictionary, related_name='favorite_words')
 
-    # Use UserManager to get the create_user method, etc.
-    objects = UserManager()
+    def __str__(self):
+        """Return a human readable representation of the model instance."""
+        return "{}".format(self.user.username,
+                           self.user.password,
+                           self.history_words.count(),
+                           self.favorite_words.count())
