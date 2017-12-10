@@ -3,6 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from .views import CreateView
 from .views import DetailsView
 
+
 urlpatterns = {
     url(r'^word/$', CreateView.as_view(), name="create"),
     url(r'^words/(?P<pk>[0-9]+)/$',
