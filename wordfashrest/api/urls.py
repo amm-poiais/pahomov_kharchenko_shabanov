@@ -5,7 +5,7 @@ from .views import DetailsView
 
 urlpatterns = {
     url(r'^word/$', CreateView.as_view(), name="create"),
-    url(r'^words/(?P[0-9]+)/$',
+    url(r'^words/(?P<pk>[0-9]+)/$',
         DetailsView.as_view(), name="details"),
 }
 
