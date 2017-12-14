@@ -28,12 +28,12 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
         permissions.IsAuthenticated,
         IsUser)
-
+#create_user!!!!
 
 class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
 
-    queryset = User.objects.all()
+    queryset = User.objects.all()# <- user from reauest
     serializer_class = UserSerializer
     permission_classes = (
         permissions.IsAuthenticated,
