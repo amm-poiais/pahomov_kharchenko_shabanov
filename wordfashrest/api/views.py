@@ -71,24 +71,30 @@ class UserDetail(APIView):
             history_words = request.data["history"].split(';')
             favorite_words = request.data["favorite"].split(';')
 
+
             user.profile.history_words.clear()
             for word in history_words:
-                user.profile.history_words.add(
-                    Dictionary.objects.get(word=word)
-                )
+                try:
+                    user.profile.history_words.add(
+                        Dictionary.objects.get(word=word.strip().lower())
+                    )
+                except:
+                    pass
 
             user.profile.favorite_words.clear()
             for word in favorite_words:
-                user.profile.favorite_words.add(
-                    Dictionary.objects.get(word=word)
-                )
+                try:
+                    user.profile.favorite_words.add(
+                        Dictionary.objects.get(word=word.strip().lower())
+                    )
+                except:
+                    pass
 
             user.save()
 
         except Exception as ex:
              return Response(ex, status=status.HTTP_400_BAD_REQUEST)
 
-        #return Response(UserSerializer(user).data)
         return Response(status=status.HTTP_200_OK)
 
 
