@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
+from rest_framework.generics import CreateAPIView
 
 from .permissions import IsUser
 from .serializers import DictionarySerializer, UserSerializer
@@ -28,7 +29,7 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
         permissions.IsAuthenticated,
         IsUser)
-#create_user!!!!
+
 
 class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
@@ -37,6 +38,14 @@ class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
         permissions.IsAuthenticated,
         IsUser)
+
+
+class CreateUserView(CreateAPIView):
+    model = User()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = UserSerializer
 
 
 class UserCreateView(generics.ListCreateAPIView):

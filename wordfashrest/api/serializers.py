@@ -15,8 +15,6 @@ class DictionarySerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     """Serializer to map the model instance into json format."""
 
-    #history_words = DictionarySerializer(source="profile.history_words", many=True)
-    #favorite_words = DictionarySerializer(source="profile.favorite_words", many=True)
     history_words = DictionarySerializer(source="profile.history_words", many=True, allow_null=True, read_only=True)
     favorite_words = DictionarySerializer(source="profile.favorite_words", many=True, allow_null=True,  read_only=True)
 
@@ -35,4 +33,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         """Map this serializer to a model and their fields."""
         model = User
-        fields = ('id', 'username', 'history_words', 'favorite_words')
+        fields = ('id', 'username', 'password', 'history_words', 'favorite_words')
