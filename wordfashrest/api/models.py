@@ -10,7 +10,7 @@ from django.dispatch import receiver
 
 class Dictionary(models.Model):
     """This class represents the dictionary model."""
-    word = models.CharField(max_length=255, blank=False, unique=True)
+    word = models.CharField(max_length=255, blank=False, unique=True, primary_key=True)
     description = models.CharField(max_length=1023)
 
     def __str__(self):

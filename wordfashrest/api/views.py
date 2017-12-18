@@ -8,7 +8,7 @@ from .models import Dictionary
 from rest_framework import permissions
 
 
-class CreateView(generics.ListCreateAPIView):
+class CreateDictionaryView(generics.ListCreateAPIView):
     """This class defines the create behavior of our rest api."""
     queryset = Dictionary.objects.all()
     serializer_class = DictionarySerializer
@@ -21,7 +21,7 @@ class CreateView(generics.ListCreateAPIView):
         serializer.save()
 
 
-class DetailsView(generics.RetrieveUpdateDestroyAPIView):
+class DetailsDictionaryView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
 
     queryset = Dictionary.objects.all()
@@ -33,7 +33,7 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
-    queryset = User.objects.all()# <- user from reauest
+    #queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (
         permissions.IsAuthenticated,
@@ -48,11 +48,11 @@ class CreateUserView(CreateAPIView):
     serializer_class = UserSerializer
 
 
-class UserCreateView(generics.ListCreateAPIView):
-    """This class defines the create behavior of our rest api."""
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-    def perform_create(self, serializer):
-        """Save the post data when creating a new user."""
-        serializer.save(username=self.request.user.username, password=self.request.user.password)
+# class UserCreateView(generics.ListCreateAPIView):
+#     """This class defines the create behavior of our rest api."""
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#
+#     def perform_create(self, serializer):
+#         """Save the post data when creating a new user."""
+#         serializer.save(username=self.request.user.username, password=self.request.user.password)
