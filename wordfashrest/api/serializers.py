@@ -9,7 +9,7 @@ class DictionarySerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = Dictionary
-        fields = ('id', 'word', 'description')
+        fields = ('word', 'description')
 
 
 class UserSerializer(serializers.ModelSerializer):
