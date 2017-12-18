@@ -33,11 +33,17 @@ class DetailsDictionaryView(generics.RetrieveUpdateDestroyAPIView):
 
 class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
-    #queryset = User.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (
         permissions.IsAuthenticated,
         IsUser)
+
+    def post(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def filter_queryset(self, queryset):
+        return self.request.user
 
 
 class CreateUserView(CreateAPIView):
