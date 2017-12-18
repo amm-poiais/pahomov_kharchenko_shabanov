@@ -32,7 +32,6 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
 
 class UserDetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
-
     queryset = User.objects.all()# <- user from reauest
     serializer_class = UserSerializer
     permission_classes = (

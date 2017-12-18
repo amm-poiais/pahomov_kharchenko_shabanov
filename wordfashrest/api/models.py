@@ -26,8 +26,7 @@ class Profile(models.Model):
 
     def __str__(self):
         """Return a human readable representation of the model instance."""
-        return "{}".format(self.user.username,
-                           self.user.password)
+        return "{}".format(self.user.username)
 
 
 @receiver(post_save, sender=User)
