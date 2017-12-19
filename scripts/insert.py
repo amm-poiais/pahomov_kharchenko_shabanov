@@ -39,7 +39,7 @@ c = db.cursor()
 
 for word, description in dictionary.items():
     keys = (word, description)
-    c.execute(query, keys)
+    c.executemany(query, keys)
 c.close()
 db.commit()
 
