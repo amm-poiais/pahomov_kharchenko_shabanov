@@ -34,12 +34,12 @@ db = psycopg2.connect(
 
 dictionary = json.load(open('dictionary.json'))
 
-query = "insert into api_dictionary values (%s)"
+query = """insert into api_dictionary values (%s)"""
 c = db.cursor()
 
 for word, description in dictionary.items():
     keys = (word, description)
-    c.executemany(query, keys)
+    c.execute(query, keys)
 c.close()
 db.commit()
 
