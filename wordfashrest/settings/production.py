@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wordfashrest.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -82,6 +81,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'wordfashrest/../../db.sqlite3'),
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
