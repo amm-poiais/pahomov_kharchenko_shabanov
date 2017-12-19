@@ -4,7 +4,9 @@ import json
 import sqlite3
 
 dictionary = json.load(open('dictionary.json'))
-db = sqlite3.connect('../db.sqlite3')
+#db = sqlite3.connect('../db.sqlite3')
+db = sqlite3.connect('postgresql-fitted-67108')
+
 query = "insert into api_dictionary values (?,?)"
 c = db.cursor()
 
