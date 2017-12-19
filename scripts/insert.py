@@ -8,7 +8,7 @@ import psycopg2
 #db = sqlite3.connect('../db.sqlite3')
 
 db = psycopg2.connect(
-    host="ec2-23-21-236-249.compute-1.amazonaws.com",
+    host="ec2-23-21-236-249.compute-1.amazonaws.com:5432",
     dbname="d13o8ji4kob0as",
     user="ckyuocextchdv",
     password="abd7e1aa626733780addaeeda9c4fd00cfb08f4b87b177eac05db58afbfb6e2e"
