@@ -70,6 +70,7 @@ class UserDetail(APIView):
         try:
             history_words = request.data["history"].split(';')
             favorite_words = request.data["favorite"].split(';')
+            main_words = request.data["main"].split(';')
 
 
             user.profile.history_words.clear()
@@ -85,6 +86,15 @@ class UserDetail(APIView):
             for word in favorite_words:
                 try:
                     user.profile.favorite_words.add(
+                        Dictionary.objects.get(word=word.strip().lower())
+                    )
+                except:
+                    pass
+
+            user.profile.main_words.clear()
+            for word in main_words:
+                try:
+                    user.profile.main_words.add(
                         Dictionary.objects.get(word=word.strip().lower())
                     )
                 except:

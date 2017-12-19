@@ -23,6 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     history_words = models.ManyToManyField(Dictionary, related_name='history_words')
     favorite_words = models.ManyToManyField(Dictionary, related_name='favorite_words')
+    main_words = models.ManyToManyField(Dictionary, related_name='main_words')
 
     def __str__(self):
         """Return a human readable representation of the model instance."""
