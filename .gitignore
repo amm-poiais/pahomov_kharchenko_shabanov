@@ -62,7 +62,7 @@ target/
 __pycache__/
 local_settings.py
 
-wordfashrest/settings/local.py
+*/settings/local.py
 .env
 *.idea
 db.sqlite3
