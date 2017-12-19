@@ -1,11 +1,14 @@
 #! /usr/bin/env python
 
 import json
-import sqlite3
+import psycopg2
 
-dictionary = json.load(open('dictionary.json'))
+
+#import sqlite3
 #db = sqlite3.connect('../db.sqlite3')
-db = sqlite3.connect('postgresql-fitted-67108')
+
+db = psycopg2.connect('postgresql-fitted-67108')
+dictionary = json.load(open('dictionary.json'))
 
 query = "insert into api_dictionary values (?,?)"
 c = db.cursor()
