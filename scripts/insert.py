@@ -34,7 +34,7 @@ db = psycopg2.connect(
 
 dictionary = json.load(open('dictionary.json'))
 
-query = "insert into api_dictionary values (%s,%s)"
+query = "insert into api_dictionary values (%s)"
 c = db.cursor()
 
 for word, description in dictionary.items():
