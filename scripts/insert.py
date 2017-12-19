@@ -39,8 +39,8 @@ c = db.cursor()
 
 for word, description in dictionary.items():
     #keys = (word, description)
-    c.execute("""insert into api_dictionary values ('%s','%s')""" % (word.replace('"', r'\"').replace("'", r"\'"),
-                                                                     description.replace('"', r'\"').replace("'", r"\'")))
+    c.execute("""insert into api_dictionary values ('%s','%s')""" % (word.replace('"', r'\\"').replace("'", r"\\'"),
+                                                                     description.replace('"', r'\\"').replace("'", r"\\'")))
 c.close()
 db.commit()
 
