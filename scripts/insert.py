@@ -32,7 +32,7 @@ db = psycopg2.connect(
             port=port
             )
 
-dictionary = json.load(open('dictionary.json'))
+dictionary = json.load(open('short-dictionary.json'))
 
 #query = "insert into api_dictionary values (%s)"
 c = db.cursor()
