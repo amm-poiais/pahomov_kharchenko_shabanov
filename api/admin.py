@@ -20,4 +20,9 @@ from .models import Profile, Dictionary
 # admin.site.unregister(User)
 # admin.site.register(User, UserAdmin)
 
-admin.site.register(Dictionary)
+
+class DictionaryAdmin(admin.ModelAdmin):
+    list_filter = []
+
+
+admin.site.register(Dictionary, DictionaryAdmin)
