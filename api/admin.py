@@ -23,6 +23,7 @@ from .models import Profile, Dictionary
 
 class DictionaryAdmin(admin.ModelAdmin):
     list_filter = []
+    list_display = ['word', 'description']
 
 
 admin.site.register(Dictionary, DictionaryAdmin)
